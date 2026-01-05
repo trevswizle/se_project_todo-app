@@ -32,12 +32,11 @@ export default class Todo {
     this._todoNameEl.textContent = this._data.name;
     this._todoCheckboxEl.checked = Boolean(this._data.completed);
 
-    // due date (optional)
     if (this._data.date) {
-      const d = new Date(this._data.date);
-      this._todoDateEl.textContent = isNaN(d)
+      const parsecDate = new Date(this._data.date);
+      this._todoDateEl.textContent = isNaN(parsecDate)
         ? ""
-        : `Due: ${d.toLocaleString("en-US", {
+        : `Due: ${parsecDate.toLocaleString("en-US", {
             year: "numeric",
             month: "short",
             day: "numeric",

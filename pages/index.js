@@ -37,8 +37,19 @@ addTodoCloseBtn.addEventListener("click", () => {
   closeModal(addTodoPopup);
 });
 
+function renderTodo (todoData) {
+  const todoEl = generateTodo(todoData);
+  todosList.append(todoEl);
+}
+
+initialTodos.forEach(todo => renderTodo(todo));
+
 addTodoForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
+
+  if (!addTodoForm.checkValidity()) {
+  return;
+  }
 
   const todoData = {
     id: uuidv4(),
@@ -47,8 +58,8 @@ addTodoForm.addEventListener("submit", (evt) => {
     completed: false,
   };
 
-  const todoEl = generateTodo(todoData);
-  todosList.append(todoEl);
+  renderTodo(todoData);
+
 
   // ✅ Task 6: reset ONLY after successful submission
   addTodoValidator.resetValidation();
