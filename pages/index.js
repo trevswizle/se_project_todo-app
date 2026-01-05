@@ -37,7 +37,7 @@ addTodoCloseBtn.addEventListener("click", () => {
   closeModal(addTodoPopup);
 });
 
-function renderTodo (todoData) {
+function renderTodo(todoData) {
   const todoEl = generateTodo(todoData);
   todosList.append(todoEl);
 }
