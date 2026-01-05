@@ -1,14 +1,27 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+A clean, interactive to-do application that allows users to create, complete, and manage tasks with real-time form validation. This project focuses on writing scalable, object-oriented JavaScript and maintaining clean, readable code that can be easily extended in the future.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+The Todo App lets users manage their daily tasks through a simple and intuitive interface.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+Technologies and techniques used:
+-HTML5 for semantic structure
+-CSS3 for layout and styling
+-JavaScript (ES6+)
+-ES6 classes and modules
+-Object-oriented programming principles
+-Encapsulation and separation of concerns
+-DOM manipulation and event handling
+-Form validation
+-Custom reusable FormValidator class
+-Dynamic error messages and button state control
+-Git & GitHub
+-Version control
+-GitHub Pages for deployment
 
 ## Deployment
 
