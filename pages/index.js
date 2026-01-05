@@ -9,14 +9,12 @@ const addTodoForm = addTodoPopup.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
-// Inputs (safer than evt.target.name.value)
 const nameInput = addTodoForm.querySelector('input[name="name"]');
 const dateInput = addTodoForm.querySelector('input[name="date"]');
 
 const openModal = (modal) => modal.classList.add("popup_visible");
 const closeModal = (modal) => modal.classList.remove("popup_visible");
 
-// Validator (create once)
 const addTodoValidator = new FormValidator(validationConfig, addTodoForm);
 addTodoValidator.enableValidation();
 
@@ -30,7 +28,7 @@ function renderTodo(todoData) {
   todosList.append(todoEl);
 }
 
-// Render initial todos ONCE
+// ✅ Render initial todos ONCE
 initialTodos.forEach(renderTodo);
 
 addTodoButton.addEventListener("click", () => openModal(addTodoPopup));
@@ -38,7 +36,6 @@ addTodoCloseBtn.addEventListener("click", () => closeModal(addTodoPopup));
 
 addTodoForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-
   if (!addTodoForm.checkValidity()) return;
 
   const todoData = {
@@ -50,9 +47,7 @@ addTodoForm.addEventListener("submit", (evt) => {
 
   renderTodo(todoData);
 
-  // Clear fields + reset errors/button state
   addTodoForm.reset();
   addTodoValidator.resetValidation();
-
   closeModal(addTodoPopup);
 });
