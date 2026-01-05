@@ -81,6 +81,10 @@ export default class FormValidator {
   // Task 6
   resetValidation() {
     this._formElement.reset();
-    this._disableSubmitButton();
+
+    this._inputList.forEach((input) => { this._hideInputError(input); 
+    });
+
+    this._toggleButtonState();
   }
 }
