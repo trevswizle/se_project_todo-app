@@ -14,4 +14,8 @@ Give a description of the technologies and techniques used. Pictures, GIFs, or s
 
 This project is deployed on GitHub Pages:
 
-[-LINK HERE](https://trevswizle.github.io/se_project_todo-app/)
+## 🚀 Live Demo
+
+View the deployed project here:  
+https://trevswizle.github.io/se_project_todo-app/
+
