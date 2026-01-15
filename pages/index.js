@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import { validationConfig, initialTodos } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
 
 // Elements
 const addTodoButton = document.querySelector(".button_action_add");
