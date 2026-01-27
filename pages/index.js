@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "https://jspm.dev";
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import { validationConfig, initialTodos } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
@@ -11,7 +11,8 @@ const addTodoButton = document.querySelector(".button_action_add");
 const addTodoForm = document.querySelector("#add-todo-popup").querySelector(".popup__form");
 
 // Initialize TodoCounter (ensure selector matches your HTML)
-const todoCounter = new TodoCounter(initialTodos, ".counter-selector-here");
+const todoCounter = new TodoCounter(initialTodos, ".counter__text");
+
 
 // Form Validation
 const addTodoValidator = new FormValidator(validationConfig, addTodoForm);
