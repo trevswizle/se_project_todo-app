@@ -3,34 +3,35 @@ import { validationConfig, initialTodos } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import PopupWithForms from "../components/PopupWithForms.js"; 
+import PopupWithForm from "../components/PopupWithForms.js"; 
 import TodoCounter from "../components/TodoCounter.js";
 
-// Elements
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoForm = document.querySelector("#add-todo-popup").querySelector(".popup__form");
 
-// Initialize TodoCounter (ensure selector matches your HTML)
+
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 
-// Form Validation
+
 const addTodoValidator = new FormValidator(validationConfig, addTodoForm);
 addTodoValidator.enableValidation();
 
-// Handle Todo logic: Updates counter when checked or deleted
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template", {
-    handleCheck: (isCompleted) => {
+    handleCheck: (id, isCompleted) => {
       todoCounter.updateCompleted(isCompleted);
     },
-    handleDelete: (isCompleted) => {
+
+    handleDelete: (id, wasCompleted) => {
       todoCounter.updateTotal(false);
-      if (isCompleted) {
+
+      if (wasCompleted) {
         todoCounter.updateCompleted(false);
       }
     },
   });
+
   return todo.getView();
 };
 
@@ -47,7 +48,7 @@ const todosSection = new Section({
 todosSection.renderItems();
 
 // PopupWithForm logic
-const newTodoPopup = new PopupWithForms("#add-todo-popup", (formData) => {
+const newTodoPopup = new PopupWithForm("#add-todo-popup", (formData) => {
   const todoData = {
     id: uuidv4(),
     name: formData.name, // Ensure HTML input has name="name"

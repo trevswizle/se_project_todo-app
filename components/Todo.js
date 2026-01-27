@@ -1,7 +1,10 @@
 export default class Todo {
-  constructor(data, selector) {
+  constructor(data, selector, { handleCheck, handleDelete } = {}) {
     this._data = data;
     this._selector = selector;
+
+    this._handleCheck = handleCheck;
+    this._handleDelete = handleDelete;
   }
 
   _getTemplate() {
@@ -11,12 +14,19 @@ export default class Todo {
 
   _setEventListeners() {
     this._todoDeleteBtn.addEventListener("click", () => {
+      if (typeof this._handleDelete === "function") {
+        this._handleDelete(this._data.id, this._data.completed);
+      }
+
       this._todoElement.remove();
       this._todoElement = null;
     });
 
     this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = this._todoCheckboxEl.checked;
+      if (typeof this._handleCheck === "function") {
+        this._handleCheck(this._data.id, this._data.completed);
+      }
     });
   }
 
@@ -33,10 +43,10 @@ export default class Todo {
     this._todoCheckboxEl.checked = Boolean(this._data.completed);
 
     if (this._data.date) {
-      const parsecDate = new Date(this._data.date);
-      this._todoDateEl.textContent = isNaN(parsecDate)
+      const parsedDate = new Date(this._data.date);
+      this._todoDateEl.textContent = isNaN(parsedDate)
         ? ""
-        : `Due: ${parsecDate.toLocaleString("en-US", {
+        : `Due: ${parsedDate.toLocaleString("en-US", {
             year: "numeric",
             month: "short",
             day: "numeric",
@@ -44,8 +54,6 @@ export default class Todo {
     } else {
       this._todoDateEl.textContent = "";
     }
-
-    // unique checkbox id + label for
     this._todoCheckboxEl.id = `todo-${this._data.id}`;
     this._todoLabelEl.setAttribute("for", `todo-${this._data.id}`);
 
